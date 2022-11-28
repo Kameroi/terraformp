@@ -1,0 +1,7 @@
+# https://github.com/bitnami/charts/blob/main/bitnami/wordpress/values.yaml
+# https://github.com/bitnami/charts/tree/main/bitnami/wordpress
+wordpressUsername: user2
+wordpressPassword: password2
+mariadb:
+  auth:
+    rootPassword: secretpassword2
