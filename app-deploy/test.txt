@@ -1,0 +1,21 @@
+resource "kubectl_manifest" "test_test" {
+  yaml_body = <<-EOF
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kube-wp
+spec:
+  containers:
+  - name: kube-wp 
+    image: busybox
+    command: ["/bin/sh"]
+    args: ["-c", "while true; do echo $(date -u) >> /data/out1.txt; sleep 5; done"]
+    volumeMounts:
+    - name: persistent-storage
+      mountPath: /data
+  volumes:
+  - name: persistent-storage
+    persistentVolumeClaim:
+      claimName: wp-content-pvc
+EOF
+}
